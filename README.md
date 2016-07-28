@@ -7,7 +7,7 @@ A elegant solution to delegate task and monitoring day-to-day activities in the 
 1.  Login Page
 2.  Admin and User Level access
 3.  Dashboard with all main details 
-4.  Add NEW Task and Client
+4.  Add NEW Task, Client and Employee.
 5.  Employees can accept adn/or complete new tasks.
 6.  A view to display all on-going tasks and Completed Task (PerUser and at organizational level)
 7.  A Daily Report form to list out all the work done by an employee in the given day along with the status of the task.
