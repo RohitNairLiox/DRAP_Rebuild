@@ -19,6 +19,12 @@ class Report_model extends CI_Model{
 			$query = $this->db->query("SELECT * FROM new_task WHERE Status = 'Not Taken'");
 			return $query->result();
 		}
+	public function Employee_list()
+		{
+
+			$query = $this->db->get('user_info');
+			return $query->result();
+		}
 	public function TakenTask_list()
 		{
 

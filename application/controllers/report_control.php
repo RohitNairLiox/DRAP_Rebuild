@@ -349,6 +349,16 @@ class Report_control extends CI_Controller {
 
 
 	}
+		public function EmployeeList_Table()
+	{
+		$data['Emp_List'] = $this->Emp_list();
+		$data['title'] = "User Dashboard";
+
+			$this->load->view('templates/head',$data);
+			$this->load->view('templates/navbar',$data);
+			$this->load->view('templates/sidebar_Admin');
+
+	}
 		 public function DO_CurrentTaskList()
 	{
 		$this->UserLoginCheck();
@@ -379,6 +389,57 @@ class Report_control extends CI_Controller {
 			$this->load->view('templates/tail');
 
 	 } 
+
+		public function Add_NewEmp()
+	{
+		$this->UserLoginCheck();
+			$data['Emp_Name'] = $this->session->userdata('user_name');
+			$data['Emp_List'] = $this->Emp_list();
+			$data['title'] = "Admin Dashboard";
+			$this->load->view('templates/head',$data);
+			$this->load->view('templates/navbar',$data);
+			$this->load->view('templates/sidebar_Admin');
+			$this->load->view('content/DataEntry_EmpList');
+			$this->load->view('content/Table_EmpList',$data);
+			$this->load->view('templates/footer');
+			$this->load->view('templates/tail');
+			
+		
+	}
+		public function NewEmp_Added()
+	{
+		$this->UserLoginCheck();
+			$data['Emp_Name'] = $this->session->userdata('user_name');
+			$data['Emp_List'] = $this->Emp_list();
+			$data['title'] = "Admin Dashboard";
+			$this->load->view('templates/head',$data);
+			$this->load->view('templates/navbar',$data);
+			$this->load->view('templates/sidebar_Admin');
+			$this->load->view('templates/NewEmp_Success');
+			$this->load->view('content/DataEntry_EmpList');
+			$this->load->view('content/Table_EmpList',$data);
+			$this->load->view('templates/footer');
+			$this->load->view('templates/tail');
+			
+		
+	}
+		public function Emp_Deleted()
+	{
+		$this->UserLoginCheck();
+			$data['Emp_Name'] = $this->session->userdata('user_name');
+			$data['Emp_List'] = $this->Emp_list();
+			$data['title'] = "Admin Dashboard";
+			$this->load->view('templates/head',$data);
+			$this->load->view('templates/navbar',$data);
+			$this->load->view('templates/sidebar_Admin');
+			$this->load->view('templates/EmpDeleted_Success');
+			$this->load->view('content/DataEntry_EmpList');
+			$this->load->view('content/Table_EmpList',$data);
+			$this->load->view('templates/footer');
+			$this->load->view('templates/tail');
+			
+		
+	}
 	/* Private functions to fetch data from DB */
 		private function newTask_list()
 		{
@@ -427,6 +488,13 @@ class Report_control extends CI_Controller {
 			
 			$this->load->model('report_model');
 			$result = $this->report_model->DailyReport_list(); 
+			return $result;
+		}
+		private function Emp_list()
+		{
+			
+			$this->load->model('report_model');
+			$result = $this->report_model->Employee_list(); 
 			return $result;
 		}
 		private function DailyReport_listUser()

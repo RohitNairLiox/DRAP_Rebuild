@@ -21,6 +21,7 @@
           <ul class="nav nav-sidebar">
             <li><a href="<?php echo base_url(); ?>New_Client"><big class="xtraLarge"><span class="glyphicon glyphicon-plus-sign"></span> Add New Client</big></a></li>
             <li><a href="<?php echo base_url(); ?>New_Task"><big class="xtraLarge"><span class="glyphicon glyphicon-plus-sign"></span> Add New Task</big></a></li>
+            <li><a href="<?php echo base_url(); ?>Add_NewEmployee"><big class="xtraLarge"><span class="glyphicon glyphicon-plus-sign"></span> Add New Employee</big></a></li>
           </ul>
           <ul class="nav nav-sidebar">
             <li><a href="<?php echo base_url(); ?>View_DailyReport"><big><span class="glyphicon glyphicon-eye-open"></span> View All Daily Reports</big></a></li>    

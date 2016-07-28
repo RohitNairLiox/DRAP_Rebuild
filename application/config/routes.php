@@ -20,11 +20,13 @@ $route['Current_TaskList'] = 'report_control/DO_CurrentTaskList';
 $route['Completed_TaskList'] = 'report_control/DO_CompletedTaskList';
 $route['Insert_NewTask'] = 'insert_control/NewTask';
 $route['Insert_NewClient'] = 'insert_control/NewClient';
+$route['Insert_NewEmployee'] = 'insert_control/NewEmployee';
 $route['StatusChanged_Taken'] = 'insert_control/StatusChange_Taken';
 $route['StatusChanged_Completed'] = 'insert_control/StatusChange_Comp';
 $route['Insert_DailyReport'] = 'insert_control/NewDailyReport';
 $route['AdminPswdChange'] = 'insert_control/ChangePassword_Admin';
 $route['UserPswdChange'] = 'insert_control/ChangePassword_User';
+$route['Delete_User'] = 'insert_control/DeleteEmployee';
 $route['ChangeStatus_Taken'] = 'report_control/StatusChange_Taken';
 $route['ChangeStatus_Complete'] = 'report_control/StatusChange_Completed';
 $route['View_DailyReport'] = 'report_control/Table_DailyReportAdmin';
@@ -33,6 +35,9 @@ $route['AdminSetting'] = 'report_control/settings_admin';
 $route['UserSetting'] = 'report_control/settings_user';
 $route['AdminPswdChanged'] = 'report_control/pswdChanged_admin';
 $route['UserPswdChanged'] = 'report_control/pswdChanged_user';
+$route['Add_NewEmployee'] = 'report_control/Add_NewEmp';
+$route['UserAdded'] = 'report_control/NewEmp_Added';
+$route['UserDeleted'] = 'report_control/Emp_Deleted';
 $route['logout'] = 'login_control/logout';
 
 /*

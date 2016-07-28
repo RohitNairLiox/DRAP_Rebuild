@@ -30,6 +30,11 @@ class Insert_model extends CI_Model{
 	 $this->db->insert('client_info',$data);
 	
 	}
+	public function Insert_Employee($data){
+	 
+	 $this->db->insert('user_info',$data);
+	
+	}
 	public function Insert_adultTeachers($data){
 	 
 	 $this->db->insert('adult_teachers',$data);
@@ -39,6 +44,11 @@ class Insert_model extends CI_Model{
 	 
 	 $this->db->insert('adult_staffs',$data);
 	
+	}
+	public function Delete_Employee($data){
+		$id = $data['Emp_ID'];
+		$this->db->delete('user_info', array('Uid' => $id));
+
 	}
 	public function Change_password($data)
 	{

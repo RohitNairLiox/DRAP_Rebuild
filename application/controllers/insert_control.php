@@ -38,6 +38,26 @@ class Insert_control extends CI_Controller {
 		$this->insert_model->Insert_Client($data);
 				redirect('ClientForm_submission'); 
 	}
+	public function DeleteEmployee(){
+		$data['Emp_ID'] = $this->input->post('Emp_ID');
+		$this->load->model('insert_model');
+		$this->insert_model->Delete_Employee($data);
+			redirect('UserDeleted'); 
+
+	}
+	public function NewEmployee(){
+		$this->load->helper(array('form', 'url'));
+		$EmpUserName = $this->input->post('Emp_Username');
+		$Emp_UserName = $EmpUserName."@drap.app";
+		$data['Name'] = $this->input->post('Emp_Name');
+		$data['Username'] = $Emp_UserName;
+		$data['Password'] = $this->input->post('Emp_Password');	
+		$data['Role'] = $this->input->post('Emp_Role');
+		
+		$this->load->model('insert_model');
+		$this->insert_model->Insert_Employee($data);
+				redirect('UserAdded'); 
+	}
 	public function NewDailyReport(){
 		$this->load->helper(array('form', 'url'));
 		 
