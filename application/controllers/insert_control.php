@@ -30,10 +30,19 @@ class Insert_control extends CI_Controller {
 		$data['Address'] = $this->input->post('Address');	
 		$data['Client_type'] = $this->input->post('Task_severity');
 		$data['Referred_by'] = $this->input->post('ReferredBy');
-		$data['Contact'] = $this->input->post('ContactNo');
+		$data['ResContact'] = $this->input->post('ResContactNo');
+		$data['OffcContact'] = $this->input->post('OffcContactNo');
+		$data['MobContact'] = $this->input->post('MobContactNo');
+		$data['AltContact'] = $this->input->post('AltContactNo');
 		$data['Email'] = $this->input->post('EmailId');
-		
-				
+		$data['PAN_No'] = $this->input->post('PANNo');
+		$data['ST_No'] = $this->input->post('STNo');
+		$data['VAT_No'] = $this->input->post('VATNo');
+		$data['CST_No'] = $this->input->post('CSTNo');
+		$data['PTRC_No'] = $this->input->post('PTRCNo');
+		$data['PTEC_No'] = $this->input->post('PTECNo');
+		$data['TAN_No'] = $this->input->post('TANNo');
+						
 		$this->load->model('insert_model');
 		$this->insert_model->Insert_Client($data);
 				redirect('ClientForm_submission'); 

@@ -4,6 +4,9 @@
           <h1 class="page-header">Add New Client</h1>
 		  <div class="bootstrap-iso">
 		 <form id="ClientListForm" action="<?php echo base_url(); ?>Insert_NewClient" method="post" autocomplete="off">
+		 <div class="form-group">
+		  <fieldset>
+    <legend>Personalia:</legend>
 	   <div class="row">
 			  <div class="col-xs-3">
 			  <div class="input-group">
@@ -48,7 +51,7 @@
 		</div>
 	   <div class="row_space"></div>
 	   <div class="row_space"></div>
-	   <div class="row_space"></div>
+	  
 	   <div class="row">
 	   		<div class="col-xs-3">
 	   		<div class="input-group">
@@ -58,23 +61,136 @@
 				<input type="text" placeholder="Referred by..." id="ReferredBy" name="ReferredBy" class="form-control" required autocomplete="on"/>
 			</div>
 			</div>
+		</div>
+		</fieldset>
+	<div class="row_space"></div>
+   <div class="row_space"></div>
+   <div class="row_space"></div>	
+   <div class="row_space"></div>	
+     <fieldset>
+    <legend>Contact Info:</legend>
+		<div class="row">
 			<div class="col-xs-3">
 			<div class="input-group">
 			  <div class="input-group-addon">
 			  	<span class="glyphicon glyphicon-phone-alt"></span>
 			  </div>
-				<input type="text" placeholder="Contact No" id="ContactNo" name="ContactNo" class="form-control" maxlength="10" pattern="[0-9]{10}" required/>
+				<input type="text" placeholder="Residence Contact No" id="ResContactNo" name="ResContactNo" class="form-control" maxlength="10" pattern="[0-9]{10}" required/>
 			</div>
 			</div>
 			<div class="col-xs-3">
 				<div class="input-group">
 			  <div class="input-group-addon">
-			  	<span>@</span>
+			  	<span class="glyphicon glyphicon-phone-alt"></span>
+			  </div>	
+				<input type="text" placeholder="Office Contact No" id="OffcContactNo" name="OffcContactNo" class="form-control" maxlength="10" pattern="[0-9]{10}" required/>
+			</div>
+			</div>
+			<div class="col-xs-3">
+	   		<div class="input-group">
+			  <div class="input-group-addon">
+			  	<span class="glyphicon glyphicon-earphone"></span>
+			  </div>
+				<input type="text" placeholder="Mobile No" id="MobContactNo" name="MobContactNo" class="form-control" maxlength="10" pattern="[0-9]{10}" required/>
+			</div>
+			</div>
+	</div>
+		<div class="row_space"></div>
+		<div class="row_space"></div>
+	<div class="row">
+
+			<div class="col-xs-3">
+			<div class="input-group">
+			  <div class="input-group-addon">
+			  	<span class="glyphicon glyphicon-earphone"></span>
+			  </div>
+				<input type="text" placeholder="Alternative Contact No" id="AltContactNo" name="AltContactNo" class="form-control" maxlength="10" pattern="[0-9]{10}" required/>
+			</div>
+			</div>
+			<div class="col-xs-3">
+				<div class="input-group">
+			  <div class="input-group-addon">
+			  	<span><strong>@</strong></span>
 			  </div>	
 				<input type="email" placeholder="Email ID" id="EmailId" name="EmailId" class="form-control" required autocomplete="off"/>
 			</div>
 			</div>
 	</div>
+</fieldset>
+			<div class="row_space"></div>
+			<div class="row_space"></div>
+			<div class="row_space"></div>
+			<div class="row_space"></div>
+			  <fieldset>
+    <legend>Extra Info:</legend>
+	<div class="row">
+			<div class="col-xs-3">
+			<div class="input-group">
+			  <div class="input-group-addon">
+			  	<span><strong>PAN </strong></span>
+			  </div>
+				<input type="text" placeholder="PAN No" id="PANNo" name="PANNo" class="form-control" required/>
+			</div>
+			</div>
+			<div class="col-xs-3">
+			<div class="input-group">
+			  <div class="input-group-addon">
+			  	<span><strong>Service tax</strong></span>
+			  </div>
+				<input type="text" placeholder="Service Tax No" id="STNo" name="STNo" class="form-control" required/>
+			</div>
+			</div>
+			<div class="col-xs-3">
+				<div class="input-group">
+			  <div class="input-group-addon">
+			  	<span><strong>VAT</strong></span>
+			  </div>	
+				<input type="text" placeholder="VAT No" id="VATNo" name="VATNo" class="form-control" required/>
+			</div>
+			</div>
+
+	</div>
+		<div class="row_space"></div>
+	<div class="row">
+			<div class="col-xs-3">
+	   		<div class="input-group">
+			  <div class="input-group-addon">
+			  	<span><strong>CST</strong></span>
+			  </div>
+				<input type="text" placeholder="CST No" id="CSTNo" name="CSTNo" class="form-control" required/>
+			</div>
+			</div>
+
+			<div class="col-xs-3">
+			<div class="input-group">
+			  <div class="input-group-addon">
+			  	<span><strong>PTRC</strong></span>
+			  </div>
+				<input type="text" placeholder="PTRC No" id="PTRCNo" name="PTRCNo" class="form-control" required/>
+			</div>
+			</div>
+			<div class="col-xs-3">
+				<div class="input-group">
+			  <div class="input-group-addon">
+			  	<span><strong>PTEC</strong></span>
+			  </div>	
+				<input type="text" placeholder="PTEC No" id="PTECNo" name="PTECNo" class="form-control" required autocomplete="off"/>
+			</div>
+			</div>
+	</div>
+		<div class="row_space"></div>
+	<div class="row">
+			<div class="col-xs-3">
+				<div class="input-group">
+			  <div class="input-group-addon">
+			  	<span><strong>TAN</strong></span>
+			  </div>	
+				<input type="text" placeholder="TAN No" id="TANNo" name="TANNo" class="form-control" required autocomplete="off"/>
+			</div>
+			</div>
+	</div>
+	</fieldset>
+		<div class="row_space"></div>
 		<div class="row_space"></div>
 		<div class="row_space"></div>
 		<div class="row_space"></div>
@@ -103,6 +219,7 @@
 			<button type="submit" class="btn btn-success rippler rippler-inverse">Submit</button>
 			</span>
 		</div>
+	</div>
 		</form>
 
 		</div>
