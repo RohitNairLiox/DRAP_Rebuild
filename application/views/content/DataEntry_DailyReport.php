@@ -7,7 +7,15 @@
 		 <div class="row_space"></div>
 	 	<div class="row">
 	 	<div class="col-xs-4">
-		 <input type="text" name="Client_Name" id="Client_Name" class="form-control" placeholder="Client Name" required>
+					<select id="Client_NameId" name="Client_NameId" class="form-control" autocomplete="off" required>
+	   					<option value="" disabled selected> Select the Client Name </option>
+	   					<?php
+								foreach($ClientName_Data as $row)
+								{
+									echo '<option value="'.$row->Client_name.'-'.$row->Client_ID.'">'.$row->Client_name.'</option>'; 
+								}
+							?>
+					</select>
 		</div>
 		<div class="col-xs-6">
 		<select name="TaskStatus" id="TaskStatus" class="form-control" required>
@@ -23,7 +31,7 @@
 		 <div class="row_space"></div>
 		 <div class="row">
 		 <div class="col-xs-10">
-		 <textarea type="text" name="Reporting" id="Reporting" class="form-control" placeholder="Report Content" required></textarea>
+		 <textarea type="text" name="Reporting" id="Reporting" class="form-control noDrag" placeholder="Report Content" required></textarea>
 		 </div>
 		 </div>
 	 	<div class="row_space"></div>

@@ -10,17 +10,27 @@
 			  <div class="input-group-addon">
 			  	<span class="glyphicon glyphicon-user"></span>
 			  </div>
-				   <input type="text" placeholder="Client Name" id="Client_Name" name="Client_Name" class="form-control" required/>
+				   <select id="Client_Name" name="Client_Name" class="form-control" autocomplete="off" required>
+				   			<option value="" disabled selected> Select the Client Name </option>
+				   					<?php
+											foreach($ClientName_Data as $row)
+											{
+												echo '<option value="'.$row->Client_name.'-'.$row->Client_ID.'">'.$row->Client_name.'</option>'; 
+											}
+										?>
+					</select>
+				   			
+
 				</div>
 			  </div>
 			  <div class="col-xs-3">
-			  <div class="input-group">
-			  <div class="input-group-addon">
-			  	<span class="glyphicon glyphicon-asterisk"></span>
-			  </div>
-			  	<input type="text" placeholder="Client UID" id="Client_ID" name="Client_ID" class="form-control" required/>	
-			  	</div>
-			  </div>
+				 <div class="input-group financialYear">
+				   <div class="input-group-addon">
+					<span class="glyphicon glyphicon-calendar"></span>
+				   </div>
+				<input data-toggle="tooltip" title="Enter the Financial Year" class="form-control" id="FinancialYear" name="FinancialYear" placeholder="Financial Year" type="text" required autocomplete="off"/>
+				 </div>
+			 </div>
 			  
 			  <div class="col-xs-3">
 			  <div class="input-group">
@@ -93,7 +103,7 @@
 		<div class="row">
 			<div class="center-block">
 			<div class="col-xs-10">
-			  	 <textarea class="form-control" placeholder="Some Extra Description about the task..." id="Extra_desc" name="Extra_desc"></textarea> 
+			  	 <textarea class="form-control noDrag" placeholder="Some Extra Description about the task..." id="Extra_desc" name="Extra_desc"></textarea> 
 			 </div>
 			 </div>
 		</div>

@@ -9,15 +9,14 @@ $route['User_Dashboard'] = 'report_control/DataOperator_dashboard';
 $route['UserPanel_Overview'] = 'report_control/DataOperator_overview';
 $route['TaskForm_submission'] = 'report_control/new_taskSubmission';
 $route['ClientForm_submission'] = 'report_control/new_clientSubmission';
+$route['ClientForm_submissionError'] = 'report_control/new_clientSubmissionError';
 $route['DailyRepForm_submission'] = 'report_control/DailyReport_submission';
 $route['DailyRepForm'] = 'report_control/DailyReport';
-$route['NewTaskList'] = 'report_control/newTaskList';
+$route['DO_CurrentTaskList'] = 'report_control/DataOperator_overview';
 $route['CurrentTaskList'] = 'report_control/currentTaskList';
 $route['CompletedTaskList'] = 'report_control/completedTaskList';
 $route['AllClientList'] = 'report_control/allClientList';
 $route['New_TaskList'] = 'report_control/DO_NewTaskList';
-$route['Current_TaskList'] = 'report_control/DO_CurrentTaskList';
-$route['Completed_TaskList'] = 'report_control/DO_CompletedTaskList';
 $route['Insert_NewTask'] = 'insert_control/NewTask';
 $route['Insert_NewClient'] = 'insert_control/NewClient';
 $route['Insert_NewEmployee'] = 'insert_control/NewEmployee';
@@ -37,8 +36,16 @@ $route['AdminPswdChanged'] = 'report_control/pswdChanged_admin';
 $route['UserPswdChanged'] = 'report_control/pswdChanged_user';
 $route['Add_NewEmployee'] = 'report_control/Add_NewEmp';
 $route['UserAdded'] = 'report_control/NewEmp_Added';
+$route['UserAdded_Error'] = 'report_control/NewEmp_AddedError';
 $route['UserDeleted'] = 'report_control/Emp_Deleted';
 $route['logout'] = 'login_control/logout';
+$route['ReportTask'] = 'report_control/TaskReport_Data';
+$route['TaskReported'] = 'report_control/TaskReport';
+$route['ReportOnTask'] = 'insert_control/Add_TaskReport';
+$route['ViewTaskReports'] = 'report_control/View_TaskReport';
+$route['ViewTaskReports_Previous'] = 'report_control/View_TaskReportPrevious';
+$route['TaskStatus_Completed'] = 'insert_control/TaskCompleted';
+
 
 /*
 | -------------------------------------------------------------------------

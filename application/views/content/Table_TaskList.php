@@ -16,7 +16,6 @@
                   <th class="text-center">Task Type</th>
                   <th class="text-center">Task Severity</th>
                   <th class="text-center">Extra Task Description</th>
-                  <th class="text-center">Status of the Task</th>
                   <th class="text-center">Task Created Time</th>
 				       </tr>
               </thead>
@@ -27,7 +26,7 @@
 
 					foreach($TaskList_Data as $row)
 					{
-						echo "<tr><td data-container='body' data-toggle='tooltip' data-placement='top' title='Session Date'>".$row->Uid."</td><td class='text-center' data-container='body' data-toggle='tooltip' data-placement='top' title='Sch/Inst/Comm Name'>".$row->Client_ID."</td><td class='text-center'data-container='body' data-toggle='tooltip' data-placement='top' title='SES of the Institute'>".$row->Client_name."</td><td class='text-center' data-container='body' data-toggle='tooltip' data-placement='top' title='Medium of Language'>".$row->Task_description."</td><td class='text-center' data-container='body' data-toggle='tooltip' data-placement='top' title='Name of the Coordinator'>".$row->Specific_taskDetail."</td><td class='text-center' data-container='body' data-toggle='tooltip' data-placement='top' title='Trainer/Counsellor's Name 1'>".$row->Start_date."</td><td class='text-center' data-container='body' data-toggle='tooltip' data-placement='top' title='Trainer/Counsellor's Name 2'>".$row->Estimated_EndDate."</td><td class='text-center' data-container='body' data-toggle='tooltip' data-placement='top' title='Age Group'>".$row->Task_type."</td><td class='text-center' data-container='body' data-toggle='tooltip' data-placement='top' title='Age Group'>".$row->Task_Severity."</td><td class='text-center'>".$row->Extra_TaskDescription."</td><td class='text-center'>".$row->Status."</td><td class='text-center'>".$row->Time."</td></tr>";
+						echo "<tr><td data-container='body' data-toggle='tooltip' data-placement='top' title='Task Unique ID'>".$row->Uid."</td><td class='text-center' data-container='body' data-toggle='tooltip' data-placement='top' title='Client ID'>".$row->Client_ID."</td><td class='text-center'data-container='body' data-toggle='tooltip' data-placement='top' title='Name of the Client'>".$row->Client_name."</td><td class='text-center' data-container='body' data-toggle='tooltip' data-placement='top' title='Task Description'>".$row->Task_description."</td><td class='text-center' data-container='body' data-toggle='tooltip' data-placement='top' title='Specific Task Detail'>".$row->Specific_taskDetail."</td><td class='text-center' data-container='body' data-toggle='tooltip' data-placement='top' title='Task Actual Start Date'>".$row->Start_date."</td><td class='text-center' data-container='body' data-toggle='tooltip' data-placement='top' title='Task Estimated End Date'>".$row->Estimated_EndDate."</td><td class='text-center' data-container='body' data-toggle='tooltip' data-placement='top' title='Task Type'>".$row->Task_type."</td><td class='text-center' data-container='body' data-toggle='tooltip' data-placement='top' title='Task Severity'>".$row->Task_Severity."</td><td class='text-center' data-container='body' data-toggle='tooltip' data-placement='top' title='Extra Task Description'>".$row->Extra_TaskDescription."</td><td class='text-center' data-container='body' data-toggle='tooltip' data-placement='top' title='Task Creation Time'>".$row->Time."</td><td><form action='".base_url()."ViewTaskReports' method='post'><button type='submit' id='Task_ID' name='Task_ID' value='".$row->Uid."' class='btn btn-primary btn-sm glyphicon glyphicon-eye-open' data-toggle='tooltip' data-placement='top' title='View reports on this task'></button></form></td></tr>";
 					} 
 				?>
 				
@@ -35,24 +34,10 @@
 			 
             </table>
 
-<script language="javascript" type="text/javascript">
-
-	var table1_Props = 	{
-					rows_counter: true,
-					rows_counter_text: "Total rows: ",
-					btn_reset: true,
-					bnt_reset_text: "Show all"
-				};
-  var x = document.getElementById("table1").rows.length;
-
-
-//<![CDATA[
-	setFilterGrid("table1",table1_Props);
-//]]>
-</script>
+<script src="http://listjs.com/no-cdn/list.js"></script>
 			</div>
 			<a type="button" class="btn btn-sm btn-large btn-default glyphicon glyphicon-circle-arrow-up" href="#table1"></a>
-
           </div>
 		</div>
 	</div>
+ 

@@ -1,7 +1,7 @@
 <div class="container-fluid">
 	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 		<h2 class="sub-header" id="ClientList">All Client List</h2>
-		  <div class="scrollit">
+		  <div class="scrollit"  style="overflow-y:scroll; max-height:500px; overflow-x:auto;">
             <table class="table table-striped table-hover table-responsive table-bordered table-condensed" id="table2">
              
 			<thead>
@@ -47,8 +47,6 @@
 <script language="javascript" type="text/javascript">
 
 var table2_Props = 	{
-				rows_counter: true,
-				rows_counter_text: "Total rows: ",
 				btn_reset: true,
 				bnt_reset_text: "Show all"
 			};

@@ -1,9 +1,7 @@
         <div class="col-sm-3 col-md-2 sidebar">
           
 		  <ul class="nav nav-sidebar">
-             <li><a href="<?php echo base_url(); ?>New_TaskList"><big><span class="glyphicon glyphicon-eye-open"></span> New Task List</big></a></li>
-             <li><a href="<?php echo base_url(); ?>Current_TaskList"><big><span class="glyphicon glyphicon-eye-open"></span> Current Task List</big></a></li>
-             <li><a href="<?php echo base_url(); ?>Completed_TaskList"><big><span class="glyphicon glyphicon-eye-open"></span> Completed Task List</big></a></li>
+             <li><a href="<?php echo base_url(); ?>DO_CurrentTaskList"><big><span class="glyphicon glyphicon-eye-open"></span> Current Task List</big></a></li>
          </ul>
          <hr>
           <ul class="nav nav-sidebar">

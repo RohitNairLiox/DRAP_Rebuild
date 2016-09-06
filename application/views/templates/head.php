@@ -9,14 +9,16 @@
     <meta name="author" content="Rohit Nair">
 	<title><?php echo $title; ?></title>
 	<script src="<?php echo base_url(); ?>ASSETS/jquery/jquery.js"></script>
-    <link rel="icon" href="https://getbootstrap.com/favicon.ico">
+    <link rel="icon" href="ASSETS/icon/internet.ico">
     <!-- Bootstrap core CSS -->
     <link href="<?php echo base_url(); ?>ASSETS/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <!-- <link href="Signin%20Template%20for%20Bootstrap_files/ie10-viewport-bug-workaround.css" rel="stylesheet"> -->
 
     <!-- Custom styles for this template -->
-    
+    <style rel="stylesheet">
+      .noDrag {resize: none !important;}
+    </style>
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->

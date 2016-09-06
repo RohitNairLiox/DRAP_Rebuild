@@ -16,23 +16,58 @@ class Insert_model extends CI_Model{
 	 $this->db->insert('new_task',$data);
 	
 	}
+	public function AddTaskReport($data){
+	 
+	 $Task_Uid = $data['Task_Uid'];
+	 $Reported_by = $data['Reported_by'];
+	 $report_content = $data['report_content'];
+	 	$query = $this->db->simple_query("INSERT INTO task_report (Task_Uid, Reported_by, report_content, reportingTime) VALUES ( ".$this->db->escape($Task_Uid).", ".$this->db->escape($Reported_by).", ".$this->db->escape($report_content).", CURDATE())");
+	 
+
+	
+	}
 	public function Insert_DailyReport($data){
 	 
+	 $ClientID = $data['Client_id'];
 	 $ClientName = $data['Client_name'];
 	 $UserName = $this->session->userdata('user_name');
 	 $ReportContent = $data['Report_Content'];
 	 $Status = $data['Status'];
 
-	 	     $query = $this->db->simple_query("INSERT INTO daily_report (Client_name, Reporting_person, Report_Content, Status, Reporting_Date) VALUES ( ".$this->db->escape($ClientName).", ".$this->db->escape($UserName).", ".$this->db->escape($ReportContent).", ".$this->db->escape($Status).", CURDATE())");
+	 	     $query = $this->db->simple_query("INSERT INTO daily_report (Client_ID, Client_name, Reporting_person, Report_Content, Status, Reporting_Date) VALUES ( ".$this->db->escape($ClientID).",".$this->db->escape($ClientName).", ".$this->db->escape($UserName).", ".$this->db->escape($ReportContent).", ".$this->db->escape($Status).", CURDATE())");
 	}
 	public function Insert_Client($data){
 	 
-	 $this->db->insert('client_info',$data);
+	 $Client_ID = $data['Client_ID'];
+	 	$query = $this->db->query("SELECT Client_name FROM client_info WHERE Client_ID='$Client_ID'");
+	 	$num_rows = $query->num_rows;
+	 	if(empty($num_rows)){
+	 		$this->db->insert('client_info',$data);
+	 		$ErrorSet = null;
+	 		$this->session->set_userdata('ErrorSet', $ErrorSet);
+
+	 	}
+	 	else{
+	 		$ErrorSet = 1;
+	 		$this->session->set_userdata('ErrorSet', $ErrorSet);
+	 	}
+
 	
 	}
 	public function Insert_Employee($data){
+	 $Emp_UserName = $data['Username'];
+	 	$query = $this->db->query("SELECT Uid FROM user_info WHERE Username='$Emp_UserName'");
+	 	$num_rows = $query->num_rows;
+	 		if(empty($num_rows)){
+	 			$this->db->insert('user_info',$data);
+	 			$ErrorSet = null;
+	 			$this->session->set_userdata('ErrorSet', $ErrorSet);
+	 		}
+	 		else{
+ 				$ErrorSet = 1;
+	 			$this->session->set_userdata('ErrorSet', $ErrorSet);
+	 		}
 	 
-	 $this->db->insert('user_info',$data);
 	
 	}
 	public function Insert_adultTeachers($data){
@@ -50,6 +85,7 @@ class Insert_model extends CI_Model{
 		$this->db->delete('user_info', array('Uid' => $id));
 
 	}
+
 	public function Change_password($data)
 	{
 		$UserName = $this->session->userdata('userName');
@@ -59,12 +95,9 @@ class Insert_model extends CI_Model{
 	}
 	public function StatusChange($data)
 	{
-		$UserName = $this->session->userdata('user_name');
 		$NewStatus = $data['Status'];
 		$UID = $data['Uid'];
 		$query = $this->db->simple_query("UPDATE new_task SET Status=".$this->db->escape($NewStatus)." WHERE Uid=".$this->db->escape($UID)."");
-		$query = $this->db->simple_query("UPDATE new_task SET Taken_by=".$this->db->escape($UserName)." WHERE Uid=".$this->db->escape($UID)."");
-		$query = $this->db->simple_query("UPDATE new_task SET Time=NOW() WHERE Uid=".$this->db->escape($UID)."");
 	}
 	/* Data Insert Model ENDS */
 	

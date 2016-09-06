@@ -1,11 +1,11 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Report_control extends CI_Controller {
-	// Dashboard View
+// Dashboard View
 		public function admin_dashboard()
 	{
 		$this->UserLoginCheck();
-			$data['TaskList_Data'] = $this->newTask_list();
+			$data['TaskList_Data'] = $this->currentTask_list();
 			$data['ClientList_Data'] = $this->Client_list();
 			$data['Emp_Name'] = $this->session->userdata('user_name');
 			$data['title'] = "Admin Dashboard";
@@ -25,7 +25,7 @@ class Report_control extends CI_Controller {
 		public function adminoverview()
 	{
 		$this->UserLoginCheck();
-			$data['TaskList_Data'] = $this->newTask_list();
+			$data['TaskList_Data'] = $this->currentTask_list();
 			$data['ClientList_Data'] = $this->Client_list();
 			$data['Emp_Name'] = $this->session->userdata('user_name');
 			$data['title'] = "Admin Dashboard";
@@ -42,7 +42,42 @@ class Report_control extends CI_Controller {
 			
 			
 		
-	}	
+	}
+		public function DataOperator_dashboard()
+	
+	{
+		$this->UserLoginCheck(); 
+			$data['TaskList_Data'] = $this->currentTask_list();
+			$data['Emp_Name'] = $this->session->userdata('user_name');
+			$data['title'] = "User Dashboard";
+			$this->load->view('templates/head',$data);
+			$this->load->view('templates/navbarDE',$data);
+			$this->load->view('templates/sidebar_DataEntry');
+			$this->load->view('templates/Welcome_banner');
+			$this->load->view('content/Table_TasklistDE',$data);
+			$this->load->view('templates/footer');
+			$this->load->view('templates/tail');
+		
+		
+	}
+		public function DataOperator_overview()
+	{
+		$this->UserLoginCheck();
+			$data['TaskList_Data'] = $this->currentTask_list();
+			$data['Emp_Name'] = $this->session->userdata('user_name');
+			$data['title'] = "User Dashboard";
+			$this->load->view('templates/head',$data);
+			$this->load->view('templates/navbarDE',$data);
+			$this->load->view('templates/sidebar_DataEntry');
+			$this->load->view('content/Table_TasklistDE',$data);
+			$this->load->view('templates/footer');
+			$this->load->view('templates/tail');
+		
+		
+	}
+// Dashboard View ENDS 	
+	
+// Settings View  	
 
 		public function settings_admin()
 	{
@@ -57,6 +92,8 @@ class Report_control extends CI_Controller {
 			$this->load->view('templates/tail');
 
 	}
+
+
 		public function settings_user()
 	{
 		$this->UserLoginCheck();
@@ -70,11 +107,14 @@ class Report_control extends CI_Controller {
 			$this->load->view('templates/tail');
 
 	}
+// Settings View ENDS
+
+// Password change View
 
 		public function pswdChanged_admin()
 	{
 		$this->UserLoginCheck();
-			$data['TaskList_Data'] = $this->newTask_list();
+			$data['TaskList_Data'] = $this->currentTask_list();
 			$data['ClientList_Data'] = $this->Client_list();
 			$data['Emp_Name'] = $this->session->userdata('user_name');
 			$data['title'] = "Admin Dashboard";
@@ -96,7 +136,7 @@ class Report_control extends CI_Controller {
 	
 	{
 		$this->UserLoginCheck(); 
-			$data['TaskList_Data'] = $this->newTask_list();
+			$data['TaskList_Data'] = $this->currentTask_list();
 			$data['Emp_Name'] = $this->session->userdata('user_name');
 			$data['title'] = "User Dashboard";
 			$this->load->view('templates/head',$data);
@@ -110,77 +150,36 @@ class Report_control extends CI_Controller {
 		
 	}
 
-		public function DataOperator_dashboard()
+// Password change View ENDS
 	
-	{
-		$this->UserLoginCheck(); 
-			$data['TaskList_Data'] = $this->newTask_list();
-			$data['Emp_Name'] = $this->session->userdata('user_name');
-			$data['title'] = "User Dashboard";
-			$this->load->view('templates/head',$data);
-			$this->load->view('templates/navbarDE',$data);
-			$this->load->view('templates/sidebar_DataEntry');
-			$this->load->view('templates/Welcome_banner');
-			$this->load->view('content/Table_TasklistDE',$data);
-			$this->load->view('templates/footer');
-			$this->load->view('templates/tail');
-		
-		
-	}
-		public function DataOperator_overview()
-	{
-		$this->UserLoginCheck();
-			$data['TaskList_Data'] = $this->newTask_list();
-			$data['Emp_Name'] = $this->session->userdata('user_name');
-			$data['title'] = "User Dashboard";
-			$this->load->view('templates/head',$data);
-			$this->load->view('templates/navbarDE',$data);
-			$this->load->view('templates/sidebar_DataEntry');
-			$this->load->view('content/Table_TasklistDE',$data);
-			$this->load->view('templates/footer');
-			$this->load->view('templates/tail');
-		
-		
-	}
-		public function StatusChange_Taken()
-	{
-		$this->UserLoginCheck();
-			$data['TaskList_Data'] = $this->newTask_list();
-			$data['Emp_Name'] = $this->session->userdata('user_name');
-			$data['title'] = "User Dashboard";
-			$this->load->view('templates/head',$data);
-			$this->load->view('templates/navbarDE',$data);
-			$this->load->view('templates/sidebar_DataEntry');
-			$this->load->view('templates/StatusChange_Success');
-			$this->load->view('content/Table_TasklistDE',$data);
-			$this->load->view('templates/footer');
-			$this->load->view('templates/tail');
-		
-		
-	}
+// Status change View
 		public function StatusChange_Completed()
 	{
 		$this->UserLoginCheck();
-	 		$data['TaskList_Data'] = $this->DOcurrentTask_list();
+	 		$data['TaskList_Data'] = $this->currentTask_list();
 	 		$data['Emp_Name'] = $this->session->userdata('user_name');
-			$data['title'] = "User Dashboard";
+			$data['title'] = "Admin Dashboard";
 			$data['tableName'] = "Current Task List";
 			$this->load->view('templates/head',$data);
-			$this->load->view('templates/navbarDE',$data);
-			$this->load->view('templates/sidebar_DataEntry');
+			$this->load->view('templates/navbar',$data);
+			$this->load->view('templates/sidebar_Admin');
 			$this->load->view('templates/StatusChange_Success');
-			$this->load->view('content/Table_TaskListTaken',$data);
+			$this->load->view('content/Table_TaskList',$data);
 			$this->load->view('templates/footer');
 			$this->load->view('templates/tail');
 	}
+
+
+// Status change View ENDS.
 		
-	// Form View
+// Entry Form View
 	
 	 	public function new_task()
 	 {
 	 	$this->UserLoginCheck();
 	 		$data['Emp_Name'] = $this->session->userdata('user_name');
 			$data['title'] = "Admin Dashboard";
+			$data['ClientName_Data'] = $this->ClientNames();
 			$this->load->view('templates/head',$data);
 			$this->load->view('templates/navbar',$data);
 			$this->load->view('templates/sidebar_Admin');
@@ -188,7 +187,9 @@ class Report_control extends CI_Controller {
 			$this->load->view('templates/footer');
 			$this->load->view('templates/tail');
 	 }
-	 	 public function new_client()
+
+	 public function new_client()
+	 
 	 {
 	 	$this->UserLoginCheck();
 	 		$data['Emp_Name'] = $this->session->userdata('user_name');
@@ -200,62 +201,9 @@ class Report_control extends CI_Controller {
 			$this->load->view('templates/footer');
 			$this->load->view('templates/tail');
 	 } 	
-	    
-	 	public function newTaskList()
-	 {
-	 	$this->UserLoginCheck();
-	 		$data['TaskList_Data'] = $this->newTask_list();
-	 		$data['Emp_Name'] = $this->session->userdata('user_name');
-			$data['title'] = "Admin Dashboard";
-			$data['tableName'] = "New Task List";
-			$this->load->view('templates/head',$data);
-			$this->load->view('templates/navbar',$data);
-			$this->load->view('templates/sidebar_Admin');
-			$this->load->view('content/Table_TaskList',$data);
-			$this->load->view('templates/footer');
-			$this->load->view('templates/tail');
-	 }
-	 	public function currentTaskList()
-	 {
-	 	$this->UserLoginCheck();
-	 		$data['TaskList_Data'] = $this->currentTask_list();
-	 		$data['Emp_Name'] = $this->session->userdata('user_name');
-			$data['title'] = "Admin Dashboard";
-			$data['tableName'] = "Current Task List";
-			$this->load->view('templates/head',$data);
-			$this->load->view('templates/navbar',$data);
-			$this->load->view('templates/sidebar_Admin');
-			$this->load->view('content/Table_TaskListCurrent',$data);
-			$this->load->view('templates/footer');
-			$this->load->view('templates/tail');
-	 }
-	 	public function completedTaskList()
-	 {
-	 	$this->UserLoginCheck();
-	 		$data['TaskList_Data'] = $this->completedTask_list();
-	 		$data['Emp_Name'] = $this->session->userdata('user_name');
-			$data['title'] = "Admin Dashboard";
-			$data['tableName'] = "Completed Task List";
-			$this->load->view('templates/head',$data);
-			$this->load->view('templates/navbar',$data);
-			$this->load->view('templates/sidebar_Admin');
-			$this->load->view('content/Table_TaskListCompleted',$data);
-			$this->load->view('templates/footer');
-			$this->load->view('templates/tail');
-	 }
-	 	public function allClientList()
-	 {
-	 	$this->UserLoginCheck();
-	 		$data['ClientList_Data'] = $this->Client_list();
-	 		$data['Emp_Name'] = $this->session->userdata('user_name');
-			$data['title'] = "Admin Dashboard";
-			$this->load->view('templates/head',$data);
-			$this->load->view('templates/navbar',$data);
-			$this->load->view('templates/sidebar_Admin');
-			$this->load->view('content/Table_ClientList',$data);
-			$this->load->view('templates/footer');
-			$this->load->view('templates/tail');
-	 }
+// Entry Form View ENDS
+
+// Success Message View
 	     public function new_taskSubmission()
 	 {
 	 	$this->UserLoginCheck();
@@ -282,15 +230,156 @@ class Report_control extends CI_Controller {
 			$this->load->view('templates/footer');
 			$this->load->view('templates/tail');
 	 }
+	 	 public function new_clientSubmission()
+	 {
+	 	$this->UserLoginCheck();
+	 		$data['Emp_Name'] = $this->session->userdata('user_name');
+			$data['title'] = "Admin Dashboard";
+			$this->load->view('templates/head',$data);
+			$this->load->view('templates/navbar',$data);
+			$this->load->view('templates/sidebar_Admin');
+			$this->load->view('templates/clientsuccess_DataEntry');
+			$this->load->view('content/DataEntry_ClientList');
+			$this->load->view('templates/footer');
+			$this->load->view('templates/tail');
+	 }
+	 	 public function new_clientSubmissionError()
+	 {
+	 	$this->UserLoginCheck();
+	 		$data['Emp_Name'] = $this->session->userdata('user_name');
+			$data['title'] = "Admin Dashboard";
+			$this->load->view('templates/head',$data);
+			$this->load->view('templates/navbar',$data);
+			$this->load->view('templates/sidebar_Admin');
+			$this->load->view('templates/clienterror_DataEntry');
+			$this->load->view('content/DataEntry_ClientListError');
+			$this->load->view('templates/footer');
+			$this->load->view('templates/tail');
+	 }	
+	 	public function NewEmp_Added()
+	{
+		$this->UserLoginCheck();
+			$data['Emp_Name'] = $this->session->userdata('user_name');
+			$data['Emp_List'] = $this->Emp_list();
+			$data['title'] = "Admin Dashboard";
+			$this->load->view('templates/head',$data);
+			$this->load->view('templates/navbar',$data);
+			$this->load->view('templates/sidebar_Admin');
+			$this->load->view('templates/NewEmp_Success');
+			$this->load->view('content/DataEntry_EmpList');
+			$this->load->view('content/Table_EmpList',$data);
+			$this->load->view('templates/footer');
+			$this->load->view('templates/tail');
+			
+		
+	}
+	 	public function NewEmp_AddedError()
+	{
+		$this->UserLoginCheck();
+			$data['Emp_Name'] = $this->session->userdata('user_name');
+			$data['Emp_List'] = $this->Emp_list();
+			$data['title'] = "Admin Dashboard";
+			$this->load->view('templates/head',$data);
+			$this->load->view('templates/navbar',$data);
+			$this->load->view('templates/sidebar_Admin');
+			$this->load->view('templates/NewEmp_Error');
+			$this->load->view('content/DataEntry_EmpListError');
+			$this->load->view('content/Table_EmpList',$data);
+			$this->load->view('templates/footer');
+			$this->load->view('templates/tail');
+			
+		
+	}
+
+		public function Emp_Deleted()
+	{
+		$this->UserLoginCheck();
+			$data['Emp_Name'] = $this->session->userdata('user_name');
+			$data['Emp_List'] = $this->Emp_list();
+			$data['title'] = "Admin Dashboard";
+			$this->load->view('templates/head',$data);
+			$this->load->view('templates/navbar',$data);
+			$this->load->view('templates/sidebar_Admin');
+			$this->load->view('templates/EmpDeleted_Success');
+			$this->load->view('content/DataEntry_EmpList');
+			$this->load->view('content/Table_EmpList',$data);
+			$this->load->view('templates/footer');
+			$this->load->view('templates/tail');
+			
+		
+	}
+			public function TaskReport()
+	{
+		
+		$data['Uid'] = $this->session->flashdata('myTaskID');
+		$this->load->model('report_model');
+		$data['TaskData'] = $this->report_model->Fetch_TaskData($data);
+		$data['PreviousReports'] = $this->report_model->Fetch_previousReport($data);
+		$data['Emp_Name'] = $this->session->userdata('user_name');
+		$data['title'] = "User Dashboard";
+			$this->load->view('templates/head',$data);
+			$this->load->view('templates/navbarDE',$data);
+			$this->load->view('templates/sidebar_DataEntry');
+			$this->load->view('templates/DataEntry_TaskReportSuccess',$data);
+			$this->load->view('content/DataEntry_TaskReport',$data);
+			$this->load->view('templates/footer');
+			$this->load->view('templates/tail');
+
+	}
+// Success Message View ENDS
+
+	 	public function currentTaskList()
+	 {
+	 	$this->UserLoginCheck();
+	 		$data['TaskList_Data'] = $this->currentTask_list();
+	 		$data['Emp_Name'] = $this->session->userdata('user_name');
+			$data['title'] = "Admin Dashboard";
+			$data['tableName'] = "Current Task List";
+			$this->load->view('templates/head',$data);
+			$this->load->view('templates/navbar',$data);
+			$this->load->view('templates/sidebar_Admin');
+			$this->load->view('content/Table_TaskList',$data);
+			$this->load->view('templates/footer');
+			$this->load->view('templates/tail');
+	 }
+	 	public function completedTaskList()
+	 {
+	 	$this->UserLoginCheck();
+	 		$data['TaskList_Data'] = $this->completedTask_list();
+	 		$data['Emp_Name'] = $this->session->userdata('user_name');
+			$data['title'] = "Admin Dashboard";
+			$data['tableName'] = "Completed Task List";
+			$this->load->view('templates/head',$data);
+			$this->load->view('templates/navbar',$data);
+			$this->load->view('templates/sidebar_Admin');
+			$this->load->view('content/Table_TaskListPrevious',$data);
+			$this->load->view('templates/footer');
+			$this->load->view('templates/tail');
+	 }
+	 	public function allClientList()
+	 {
+	 	$this->UserLoginCheck();
+	 		$data['ClientList_Data'] = $this->Client_list();
+	 		$data['Emp_Name'] = $this->session->userdata('user_name');
+			$data['title'] = "Admin Dashboard";
+			$this->load->view('templates/head',$data);
+			$this->load->view('templates/navbar',$data);
+			$this->load->view('templates/sidebar_Admin');
+			$this->load->view('content/Table_ClientList',$data);
+			$this->load->view('templates/footer');
+			$this->load->view('templates/tail');
+	 }
+	 
 	 	 public function DailyReport()
 	 {
 	 	$this->UserLoginCheck();
 	 		$data['Emp_Name'] = $this->session->userdata('user_name');
 			$data['title'] = "User Dashboard";
+			$data['ClientName_Data'] = $this->ClientNames();
 			$this->load->view('templates/head',$data);
 			$this->load->view('templates/navbarDE',$data);
 			$this->load->view('templates/sidebar_DataEntry');
-			$this->load->view('content/DataEntry_DailyReport');
+			$this->load->view('content/DataEntry_DailyReport',$data);
 			$this->load->view('templates/footer');
 			$this->load->view('templates/tail');
 	 }
@@ -321,34 +410,8 @@ class Report_control extends CI_Controller {
 			$this->load->view('templates/tail');
 	 }
 	
-	     public function new_clientSubmission()
-	 {
-	 	$this->UserLoginCheck();
-	 		$data['Emp_Name'] = $this->session->userdata('user_name');
-			$data['title'] = "Admin Dashboard";
-			$this->load->view('templates/head',$data);
-			$this->load->view('templates/navbar',$data);
-			$this->load->view('templates/sidebar_Admin');
-			$this->load->view('templates/clientsuccess_DataEntry');
-			$this->load->view('content/DataEntry_ClientList');
-			$this->load->view('templates/footer');
-			$this->load->view('templates/tail');
-	 }	
-		 public function DO_NewTaskList()
-	{
-		$this->UserLoginCheck();
-			$data['TaskList_Data'] = $this->newTask_list();
-			$data['Emp_Name'] = $this->session->userdata('user_name');
-			$data['title'] = "User Dashboard";
-			$this->load->view('templates/head',$data);
-			$this->load->view('templates/navbarDE',$data);
-			$this->load->view('templates/sidebar_DataEntry');
-			$this->load->view('content/Table_TasklistDE',$data);
-			$this->load->view('templates/footer');
-			$this->load->view('templates/tail');
 
 
-	}
 		public function EmployeeList_Table()
 	{
 		$data['Emp_List'] = $this->Emp_list();
@@ -359,36 +422,6 @@ class Report_control extends CI_Controller {
 			$this->load->view('templates/sidebar_Admin');
 
 	}
-		 public function DO_CurrentTaskList()
-	{
-		$this->UserLoginCheck();
-			$data['Emp_Name'] = $this->session->userdata('user_name');
-			$data['TaskList_Data'] = $this->DOcurrentTask_list();
-			$data['title'] = "User Dashboard";
-			$data['tableName'] = "Current Task List";
-			$this->load->view('templates/head',$data);
-			$this->load->view('templates/navbarDE',$data);
-			$this->load->view('templates/sidebar_DataEntry');
-			$this->load->view('content/Table_TasklistTaken',$data);
-			$this->load->view('templates/footer');
-			$this->load->view('templates/tail');
-
-	 } 
-		 public function DO_CompletedTaskList()
-	{
-		$this->UserLoginCheck();
-			$data['Emp_Name'] = $this->session->userdata('user_name');
-			$data['TaskList_Data'] = $this->DOcompletedTask_list();
-			$data['title'] = "User Dashboard";
-			$data['tableName'] = "Completed Task List";
-			$this->load->view('templates/head',$data);
-			$this->load->view('templates/navbarDE',$data);
-			$this->load->view('templates/sidebar_DataEntry');
-			$this->load->view('content/Table_TasklistCompleted',$data);
-			$this->load->view('templates/footer');
-			$this->load->view('templates/tail');
-
-	 } 
 
 		public function Add_NewEmp()
 	{
@@ -406,53 +439,61 @@ class Report_control extends CI_Controller {
 			
 		
 	}
-		public function NewEmp_Added()
+
+		public function View_TaskReport()
 	{
-		$this->UserLoginCheck();
-			$data['Emp_Name'] = $this->session->userdata('user_name');
-			$data['Emp_List'] = $this->Emp_list();
-			$data['title'] = "Admin Dashboard";
+		$data['Uid'] = $this->input->post('Task_ID');
+		$this->load->model('report_model');
+		$data['PreviousReports'] = $this->report_model->Fetch_previousReport($data);
+		$data['Emp_Name'] = $this->session->userdata('user_name');
+		$data['title'] = "Admin Dashboard";
 			$this->load->view('templates/head',$data);
 			$this->load->view('templates/navbar',$data);
 			$this->load->view('templates/sidebar_Admin');
-			$this->load->view('templates/NewEmp_Success');
-			$this->load->view('content/DataEntry_EmpList');
-			$this->load->view('content/Table_EmpList',$data);
+			$this->load->view('content/Table_TaskReport',$data);
 			$this->load->view('templates/footer');
-			$this->load->view('templates/tail');
-			
-		
+			$this->load->view('templates/tail');			
+			 
 	}
-		public function Emp_Deleted()
+		public function View_TaskReportPrevious()
 	{
-		$this->UserLoginCheck();
-			$data['Emp_Name'] = $this->session->userdata('user_name');
-			$data['Emp_List'] = $this->Emp_list();
-			$data['title'] = "Admin Dashboard";
+		$data['Uid'] = $this->input->post('Task_ID');
+		$this->load->model('report_model');
+		$data['PreviousReports'] = $this->report_model->Fetch_previousReport($data);
+		$data['Emp_Name'] = $this->session->userdata('user_name');
+		$data['title'] = "Admin Dashboard";
 			$this->load->view('templates/head',$data);
 			$this->load->view('templates/navbar',$data);
 			$this->load->view('templates/sidebar_Admin');
-			$this->load->view('templates/EmpDeleted_Success');
-			$this->load->view('content/DataEntry_EmpList');
-			$this->load->view('content/Table_EmpList',$data);
+			$this->load->view('content/Table_TaskReportPrevious',$data);
 			$this->load->view('templates/footer');
-			$this->load->view('templates/tail');
-			
-		
+			$this->load->view('templates/tail');			
+			 
 	}
+		public function TaskReport_Data()
+	{
+		$data['Uid'] = $this->input->post('Task_ID');
+		$this->load->model('report_model');
+		$data['TaskData'] = $this->report_model->Fetch_TaskData($data);
+		$data['PreviousReports'] = $this->report_model->Fetch_previousReport($data);
+
+		$data['Emp_Name'] = $this->session->userdata('user_name');
+		$data['title'] = "User Dashboard";
+			$this->load->view('templates/head',$data);
+			$this->load->view('templates/navbarDE',$data);
+			$this->load->view('templates/sidebar_DataEntry');
+			$this->load->view('content/DataEntry_TaskReport',$data);
+			$this->load->view('templates/footer');
+			$this->load->view('templates/tail');			
+			 
+	}
+
 	/* Private functions to fetch data from DB */
-		private function newTask_list()
-		{
-			
-			$this->load->model('report_model');
-			$result = $this->report_model->Task_list(); 
-			return $result;
-		}
 		private function currentTask_list()
 		{
 			
 			$this->load->model('report_model');
-			$result = $this->report_model->TakenTask_list(); 
+			$result = $this->report_model->CurrentTask_list(); 
 			return $result;
 		}
 		private function completedTask_list()
@@ -462,20 +503,13 @@ class Report_control extends CI_Controller {
 			$result = $this->report_model->CompletedTask_list(); 
 			return $result;
 		}
-		private function DOcurrentTask_list()
+		private function ReportingTask_list()
 		{
 			
 			$this->load->model('report_model');
-			$result = $this->report_model->TakenTask_listPerUser(); 
+			$result = $this->report_model->Fetch_TaskData($data);
 			return $result;
-		}
-		private function DOcompletedTask_list()
-		{
-			
-			$this->load->model('report_model');
-			$result = $this->report_model->CompletedTask_listPerUser(); 
-			return $result;
-		}		
+		}	
 		private function Client_list()
 		{
 			
@@ -510,6 +544,13 @@ class Report_control extends CI_Controller {
 			if (!$UserSession){ 
 				redirect(base_url());
 			}
+		}
+		private function ClientNames()
+		{
+			
+			$this->load->model('report_model');
+			$result = $this->report_model->ClientName_list(); 
+			return $result;
 		}
 }
 ?>

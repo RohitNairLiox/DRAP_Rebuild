@@ -5,8 +5,10 @@ class Insert_control extends CI_Controller {
 	public function NewTask(){
 		$this->load->helper(array('form', 'url'));
 		 
-		$data['Client_name'] = $this->input->post('Client_Name');
-		$data['Client_ID'] = $this->input->post('Client_ID');
+		$ClientName_Id = $this->input->post('Client_Name');
+		$name_Id = explode("-",$ClientName_Id);
+		$data['Client_name'] = $name_Id[0];
+		$data['Client_ID'] = $name_Id[1];
 		$data['Task_description'] = $this->input->post('Task_desc');
 		$data['Specific_taskDetail'] = $this->input->post('specificTask_desc');
 		$data['Start_date'] = $this->input->post('startDate');
@@ -14,7 +16,7 @@ class Insert_control extends CI_Controller {
 		$data['Task_type'] = $this->input->post('Task_type');
 		$data['Task_Severity'] = $this->input->post('Task_severity');
 		$data['Extra_TaskDescription'] = $this->input->post('Extra_desc');
-		$data['Status'] = "Not Taken";
+		$data['Status'] = "Current";
 		$data['Time'] = date("d/m/Y h:i a");
 
 		$this->load->model('insert_model');
@@ -45,7 +47,26 @@ class Insert_control extends CI_Controller {
 						
 		$this->load->model('insert_model');
 		$this->insert_model->Insert_Client($data);
-				redirect('ClientForm_submission'); 
+		$ErrorMsg = $this->session->userdata('ErrorSet');
+		$ErrorMsg = (string) $ErrorMsg; 
+
+			if(empty($ErrorMsg)){
+				redirect('ClientForm_submission');
+			}
+			else{
+		 		$data['Emp_Name'] = $this->session->userdata('user_name');
+				$data['title'] = "Admin Dashboard";
+				$this->load->view('templates/head',$data);
+				$this->load->view('templates/navbar',$data);
+				$this->load->view('templates/sidebar_Admin');
+				$this->load->view('templates/clienterror_DataEntry');
+				$this->load->view('content/DataEntry_ClientListError',$data);
+				$this->load->view('templates/footer');
+				$this->load->view('templates/tail');
+			}
+			$this->session->unset_userdata('ErrorSet');
+
+
 	}
 	public function DeleteEmployee(){
 		$data['Emp_ID'] = $this->input->post('Emp_ID');
@@ -65,12 +86,23 @@ class Insert_control extends CI_Controller {
 		
 		$this->load->model('insert_model');
 		$this->insert_model->Insert_Employee($data);
-				redirect('UserAdded'); 
+			$ErrorMsg = $this->session->userdata('ErrorSet');
+			$ErrorMsg = (string) $ErrorMsg; 
+				if(empty($ErrorMsg)){
+					redirect('UserAdded'); 
+				}
+				else{
+					redirect('UserAdded_Error');
+				}
+				$this->session->unset_userdata('ErrorSet');
 	}
 	public function NewDailyReport(){
 		$this->load->helper(array('form', 'url'));
 		 
-		$data['Client_name'] = $this->input->post('Client_Name');
+		$Client_NameId = $this->input->post('Client_NameId');
+		$name_Id = explode("-",$Client_NameId);
+		$data['Client_id'] = $name_Id[1];
+		$data['Client_name'] = $name_Id[0];
 		$data['Report_Content'] = $this->input->post('Reporting');
 		$data['Status'] = $this->input->post('TaskStatus');
 		
@@ -78,19 +110,11 @@ class Insert_control extends CI_Controller {
 		$this->insert_model->Insert_DailyReport($data);
 				redirect('DailyRepForm_submission'); 
 	}	
-	
-	public function StatusChange_Taken(){
 
-		$data['Status'] = $this->input->post('NewStatus');
-		$data['Uid'] = $this->input->post('UID');
-		$this->load->model('insert_model');
-		$this->insert_model->StatusChange($data);
-				redirect('ChangeStatus_Taken'); 
-	}
-	public function StatusChange_Comp(){
+	public function TaskCompleted(){
 
-		$data['Status'] = $this->input->post('NewStatus');
-		$data['Uid'] = $this->input->post('UID');
+		$data['Status'] = "Completed";
+		$data['Uid'] = $this->input->post('Task_Uid');
 		$this->load->model('insert_model');
 		$this->insert_model->StatusChange($data);
 				redirect('ChangeStatus_Complete'); 
@@ -111,5 +135,17 @@ class Insert_control extends CI_Controller {
 		$this->insert_model->Change_Password($data);
 			redirect('UserPswdChanged'); 
 	}
+	public function Add_TaskReport()
+	{
+		
+		$data['Task_Uid'] = $this->input->post('getTask_Uid');
+		$data['Reported_by'] = $this->session->userdata('user_name');
+		$data['report_content'] = $this->input->post('addContent');
+		$this->load->model('insert_model');
+		$this->insert_model->AddTaskReport($data);
+		$this->session->set_flashdata('myTaskID', $data['Task_Uid']);
+			 redirect('TaskReported');
+	}
+
 }
 ?>
