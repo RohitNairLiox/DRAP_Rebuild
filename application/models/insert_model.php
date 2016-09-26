@@ -16,6 +16,22 @@ class Insert_model extends CI_Model{
 	 $this->db->insert('new_task',$data);
 	
 	}
+	public function Update_Task($data){
+		$id = $data['Task_Id'];
+			$datalist['Client_name'] = $data['Client_name'];
+			$datalist['Client_ID'] = $data['Client_ID'];
+			$datalist['Financial_year'] = $data['Financial_year'];
+			$datalist['Task_description'] = $data['Task_description'];
+			$datalist['Specific_taskDetail'] = $data['Specific_taskDetail'];
+			$datalist['Start_date'] = $data['Start_date'];
+			$datalist['Estimated_EndDate'] = $data['Estimated_EndDate'];
+			$datalist['Task_type'] = $data['Task_type'];
+			$datalist['Task_Severity'] = $data['Task_Severity'];
+			$datalist['Extra_TaskDescription'] = $data['Extra_TaskDescription'];
+
+					 $this->db->where('Uid', $id);
+					 $this->db->update('new_task', $datalist); 
+	}
 	public function AddTaskReport($data){
 	 
 	 $Task_Uid = $data['Task_Uid'];

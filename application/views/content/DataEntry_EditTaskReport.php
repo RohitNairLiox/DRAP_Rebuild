@@ -8,112 +8,125 @@
 	foreach($TaskData as $row)
 	{	
 	echo '								
-	<div id="TaskDataList">
+	
+<div class="row_space"></div>
+		<div class="row_space"></div>
+
+		 <div class="row">
+			  <div class="col-xs-3">
+			  <div class="input-group">
+			  <div class="input-group-addon">
+			  	<big class="glyphicon glyphicon-user"></big>
+			  </div>
+				   <input type="text" value="'.$row->Client_name.'" disabled class="form-control" />
+				   			
+
+				</div>
+			  </div>
+			  <div class="col-xs-3">
+				 <div class="input-group financialYear">
+				   <div class="input-group-addon">
+					<big class="glyphicon glyphicon-calendar"></big>
+				   </div>
+				<input data-toggle="tooltip" title="Enter the Financial Year" type="text" value="'.$row->Financial_year.'" disabled class="form-control"/>
+				 </div>
+			 </div>
+			  
+			  <div class="col-xs-3">
+			  <div class="input-group">
+			  <div class="input-group-addon">
+			  	<strong>Desc</strong>
+			  </div>
+			   <input  type="text" value="'.$row->Task_description.'" disabled class="form-control" />
+			  </div>
+			  </div>
+			  <div class="col-xs-3">
+			  <div class="input-group">
+			  <div class="input-group-addon">
+			  	<strong>Desc</strong>
+			  </div>
+				<input type="text" value="'.$row->Specific_taskDetail.'" disabled class="form-control" />
+			  </div>
+			  </div>
+		</div>
+	   <div class="row_space"></div>
 	   <div class="row">
-	   		<div class="col-xs-3">
-				  <div class="input-group">
-				  <div class="input-group-addon">
-				  	<strong>Task UID</strong>
-				  </div>
-		   			<input class="form-control" id="task_Uid" name="task_Uid" value="'.$row->Uid.'" disabled data-container="body" data-toggle="tooltip" data-placement="top" title="Task Unique ID"/>
-		   		  </div>
-	   		</div>
-	   		<div class="col-xs-3">
-					  <div class="input-group">
-					  <div class="input-group-addon">
-					  	<strong>Client UID</strong>
-					  </div>
-			   			<input class="form-control" value="'.$row->Client_ID.'" disabled data-container="body" data-toggle="tooltip" data-placement="top" title="Client ID"/>
-			   		  </div>
-	   		</div>
-	   		<div class="col-xs-4">
-	   			<div class="input-group">
-			  <div class="input-group-addon">
-			  	<strong>Client Name</strong>
-			  </div>
-	   			<input class="form-control" value="'.$row->Client_name.'" disabled data-container="body" data-toggle="tooltip" data-placement="top" title="Client Name"/>
-	   		</div>
-	   		</div>
-		</div>
-		<div class="row_space"></div>
-		<div class="row_space"></div>
-		<div class="row_space"></div>
-		
-		<div class="row">
-	   		<div class="col-xs-3">
-	   		 <div class="input-group">
-			  <div class="input-group-addon">
-			  	<strong>Desc</strong>
-			  </div>
-	   			<input class="form-control" value="'.$row->Task_description.'" disabled data-container="body" data-toggle="tooltip" data-placement="top" title="Task Short Description"/>
-	   		</div>
-	   		</div>
-	   		<div class="col-xs-3">
-	   		  <div class="input-group">
-			  <div class="input-group-addon">
-			  	<strong>Desc</strong>
-			  </div>
-	   			<input class="form-control" value="'.$row->Specific_taskDetail.'" disabled data-container="body" data-toggle="tooltip" data-placement="top" title="Task Specific Description"/>
-	   		</div>
-	   		</div>
-	   		<div class="col-xs-4">
-	   		  <div class="input-group">
-			  <div class="input-group-addon">
-			  	<strong>Desc</strong>
-			  </div>
-	   			<input class="form-control" value="'.$row->Extra_TaskDescription.'" disabled data-container="body" data-toggle="tooltip" data-placement="top" title="Task Extra Description"/>
-	   		</div>
-	   		</div>
-		</div>
-		<div class="row_space"></div>
-		<div class="row_space"></div>
-		<div class="row_space"></div>
-		<div class="row_space"></div>
-		<div class="row_space"></div>
-		
-		<div class="row">
-	   		<div class="col-xs-5">
-	   		  <div class="input-group">
-			  <div class="input-group-addon">
-			  	<span class="glyphicon glyphicon-calendar"></span>
-			  </div>
-	   			<input class="form-control" value="'.$row->Start_date.'" disabled data-container="body" data-toggle="tooltip" data-placement="top" title="Start Date"/>
-	   		</div>
-	   		</div>
-	   		<div class="col-xs-5">
-	   		  <div class="input-group">
-			  <div class="input-group-addon">
-			  	<span class="glyphicon glyphicon-calendar"></span>
-			  </div>
-	   			<input class="form-control" value="'.$row->Estimated_EndDate.'" disabled data-container="body" data-toggle="tooltip" data-placement="top" title="Est. End Date"/>
-	   		</div>
-	   		</div>
 
 		</div>
 		<div class="row_space"></div>
 		<div class="row_space"></div>
 		<div class="row_space"></div>
+		
+		<div class="row">
+				<div class="col-xs-5">
+				 <div class="input-group startDate">
+				   <div class="input-group-addon">
+					<big class="glyphicon glyphicon-calendar"></big>
+				   </div>
+				<input data-toggle="tooltip" title="Task Start Date" type="text" value="'.$row->Start_date.'" disabled class="form-control"/>
+				 </div>
+			  </div>
+			  	<div class="col-xs-5">
+				 <div class="input-group endDate">
+				   <div class="input-group-addon">
+					<big class="glyphicon glyphicon-calendar"></big>
+				   </div>
+				<input data-toggle="tooltip" title="Task Estimated End Date"  type="text" value="'.$row->Estimated_EndDate.'" disabled class="form-control"/>
+				 </div>
+			  </div>
+		</div>
+		<div class="row_space"></div>
+		<div class="row_space"></div>
 		<div class="row_space"></div>
 		
 		<div class="row">
-	   		<div class="col-xs-3">
-	   			<div class="input-group">
+			<div class="col-xs-5">
+				<div class="input-group">
 			  <div class="input-group-addon">
 			  	<strong>Task Type</strong>
 			  </div>
-	   			<input class="form-control" value="'.$row->Task_type.'" disabled data-container="body" data-toggle="tooltip" data-placement="top" title="Task Type"/>
-	   		</div>
-	   		</div>
-	   		<div class="col-xs-3">
-	   		 <div class="input-group">
-			  <div class="input-group-addon">
-			  	<strong>Severity</strong>
+				<input type="text" value="'.$row->Task_type.'" disabled class="form-control" />
 			  </div>
-	   			<input class="form-control" value="'.$row->Task_Severity.'" disabled data-container="body" data-toggle="tooltip" data-placement="top" title="Task Severity"/>
-	   		</div>
-	   		</div>
+			  </div>
+			  <div class="col-xs-5">
+				<div class="input-group">
+			  <div class="input-group-addon">
+			  	<strong>Task Severity</strong>
+			  </div>
+				<input type="text" value="'.$row->Task_Severity.'" disabled class="form-control" />
+			  </div>
+			  </div>
 		</div>
-	</div>';
+		<div class="row_space"></div>
+		<div class="row_space"></div>
+		<div class="row_space"></div>	
+		<div class="row_space"></div>	
+		<div class="row">
+			<div class="center-block">
+			<div class="col-xs-10">
+				<div class="input-group">
+			  <div class="input-group-addon">
+			  	<strong>Extra Description</strong>
+			  </div>
+			  	 <textarea class="form-control noDrag" disabled class="form-control">'.$row->Extra_TaskDescription.'</textarea> 
+			  	 </div>
+			 </div>
+			 </div>
+		</div>
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+
+	';
 }
 ?>
 	
@@ -122,7 +135,7 @@
 	<h2 class="page-header">Edit Reports Details of this Task</h2>
 
 
-	<form id="TaskListForm" action="<?php echo base_url(); ?>EditTaskReports" method="post" autocomplete="on">
+	<form id="TaskListForm" action="<?php echo base_url(); ?>UpdateTaskReport" method="post" autocomplete="on">
 	   <div class="row">
 			  <div class="col-xs-3">
 			  <div class="input-group">
@@ -237,7 +250,7 @@
 		<?php	
 	foreach($TaskData as $row)
 	{	
-			echo '<button type="submit" class="btn btn-success rippler rippler-inverse" value="'.$row->Uid.'">Submit</button>';
+			echo '<button type="submit" id="Task_Uid" name="Task_Uid" class="btn btn-success rippler rippler-inverse" value="'.$row->Uid.'">Submit</button>';
 		}
 	?>
 			</span>

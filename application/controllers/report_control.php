@@ -217,6 +217,20 @@ class Report_control extends CI_Controller {
 			$this->load->view('templates/footer');
 			$this->load->view('templates/tail');
 	 }
+	     public function TaskUpdated()
+	 {
+	 	$this->UserLoginCheck();
+	 		$data['Emp_Name'] = $this->session->userdata('user_name');
+	 		$datalist['TaskList_Data'] = $this->currentTask_list();
+			$data['title'] = "Admin Dashboard";
+			$this->load->view('templates/head',$data);
+			$this->load->view('templates/navbar',$data);
+			$this->load->view('templates/sidebar_Admin');
+			$this->load->view('templates/tasksuccess_Updated');
+			$this->load->view('content/Table_TaskList',$datalist);
+			$this->load->view('templates/footer');
+			$this->load->view('templates/tail');
+	 }
 	     public function DailyReport_submission()
 	 {
 	 	$this->UserLoginCheck();

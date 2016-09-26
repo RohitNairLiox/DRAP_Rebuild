@@ -9,6 +9,7 @@ class Insert_control extends CI_Controller {
 		$name_Id = explode("-",$ClientName_Id);
 		$data['Client_name'] = $name_Id[0];
 		$data['Client_ID'] = $name_Id[1];
+		$data['Financial_year'] = $this->input->post('FinancialYear');
 		$data['Task_description'] = $this->input->post('Task_desc');
 		$data['Specific_taskDetail'] = $this->input->post('specificTask_desc');
 		$data['Start_date'] = $this->input->post('startDate');
@@ -22,6 +23,27 @@ class Insert_control extends CI_Controller {
 		$this->load->model('insert_model');
 		$this->insert_model->Insert_Task($data);
 				redirect('TaskForm_submission'); 
+	}
+	public function UpdateTask(){
+		$this->load->helper(array('form', 'url'));
+		 
+		$ClientName_Id = $this->input->post('Client_Name');
+		$name_Id = explode("-",$ClientName_Id);
+		$data['Task_Id'] = $this->input->post('Task_Uid');
+		$data['Client_name'] = $name_Id[0];
+		$data['Client_ID'] = $name_Id[1];
+		$data['Financial_year'] = $this->input->post('FinancialYear');
+		$data['Task_description'] = $this->input->post('Task_desc');
+		$data['Specific_taskDetail'] = $this->input->post('specificTask_desc');
+		$data['Start_date'] = $this->input->post('startDate');
+		$data['Estimated_EndDate'] = $this->input->post('endDate');
+		$data['Task_type'] = $this->input->post('Task_type');
+		$data['Task_Severity'] = $this->input->post('Task_severity');
+		$data['Extra_TaskDescription'] = $this->input->post('Extra_desc');
+
+		$this->load->model('insert_model');
+		$this->insert_model->Update_Task($data);
+				redirect('TaskUpdated'); 
 	}
 
 	public function NewClient(){

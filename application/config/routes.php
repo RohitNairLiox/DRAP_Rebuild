@@ -49,6 +49,8 @@ $route['ViewTaskReports'] = 'report_control/View_TaskReport';
 $route['EditTaskReports'] = 'report_control/Edit_TaskReport';
 $route['ViewTaskReports_Previous'] = 'report_control/View_TaskReportPrevious';
 $route['TaskStatus_Completed'] = 'insert_control/TaskCompleted';
+$route['UpdateTaskReport'] = 'insert_control/UpdateTask';
+$route['TaskUpdated'] = 'report_control/TaskUpdated';
 
 
 /*
