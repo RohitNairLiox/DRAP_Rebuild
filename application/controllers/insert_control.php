@@ -75,6 +75,32 @@ class Insert_control extends CI_Controller {
 			redirect('UserDeleted'); 
 
 	}
+	public function UpdateEmployee(){
+		$data['Emp_ID'] = $this->input->post('Emp_ID_Update');
+		$data['Emp_Name'] = $this->input->post('Emp_Name');
+		$data['Emp_Username'] = $this->input->post('Emp_Username');
+		$data['Emp_Password'] = $this->input->post('Emp_Password');
+		$data['Emp_Role'] = $this->input->post('Emp_Role');
+		$this->load->model('insert_model');
+		$this->insert_model->Update_Employee($data);
+			redirect('UserUpdated'); 
+
+	}
+	// THE CODE THAT I'M WORKING ON  THE CODE THAT I'M WORKING ON  THE CODE THAT I'M WORKING ON  THE CODE THAT I'M WORKING ON 
+	public function EditEmployee(){
+		$data['Emp_ID'] = $this->input->post('Emp_IDEdit');
+			$this->load->model('report_model');
+		$datalist['Emp_Data'] = $this->report_model->Fetch_employeeData($data);
+			$data['Emp_Name'] = $this->session->userdata('user_name');
+		 	$data['title'] = "Admin Dashboard";
+				$this->load->view('templates/head',$data);
+				$this->load->view('templates/navbar',$data);
+				$this->load->view('templates/sidebar_Admin');
+				$this->load->view('content/DataEntry_EditEmployee',$datalist);
+				$this->load->view('templates/footer');
+				$this->load->view('templates/tail');
+
+	}
 	public function NewEmployee(){
 		$this->load->helper(array('form', 'url'));
 		$EmpUserName = $this->input->post('Emp_Username');

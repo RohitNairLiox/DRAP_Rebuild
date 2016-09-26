@@ -68,6 +68,12 @@ class Report_model extends CI_Model{
 				$query = $this->db->query("SELECT * FROM task_report WHERE Task_Uid='$id'");
 				return $query->result();
 		}
+	public function Fetch_employeeData($data)
+		{
+			$id = $data['Emp_ID'];
+				$query = $this->db->query("SELECT * FROM user_info WHERE Uid='$id'");
+				return $query->result();
+		}
 
 
 	/* Result Model ENDS */

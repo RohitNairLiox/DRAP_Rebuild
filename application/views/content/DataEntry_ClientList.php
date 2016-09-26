@@ -3,7 +3,7 @@
 	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">Add New Client</h1>
 		  <div class="bootstrap-iso">
-		 <form id="ClientListForm" action="<?php echo base_url(); ?>Insert_NewClient" method="post" onsubmit="return toSubmit();" autocomplete="off">
+		 <form id="ClientListForm" action="<?php echo base_url(); ?>Insert_NewClient" method="post" autocomplete="off">
 		 <div class="form-group">
 		  <fieldset>
     <legend>Personalia:</legend>
@@ -229,15 +229,7 @@
    </div>
 <script src="<?php echo base_url(); ?>ASSETS/CUSTOM/js/ClientList.js"></script>
 <script src="<?php echo base_url(); ?>ASSETS/datepicker/js/bootstrap-datepicker.min.js"></script>
-<script>
-	function toSubmit(){
-		var w = document.getElementById('ResContactNo').value;
-		var x = document.getElementById('OffcContactNo').value;
-		var y = document.getElementById('MobcContactNo').value;
-		var z = document.getElementById('AltContactNo').value;
-			alert(w + x + y + z);
-		}
-</script>
+
 <link rel="stylesheet" href="<?php echo base_url(); ?>ASSETS/datepicker/css/bootstrap-datepicker3.css"/>
 
 

@@ -308,6 +308,23 @@ class Report_control extends CI_Controller {
 			
 		
 	}
+		public function Emp_Updated()
+	{
+		$this->UserLoginCheck();
+			$data['Emp_Name'] = $this->session->userdata('user_name');
+			$data['Emp_List'] = $this->Emp_list();
+			$data['title'] = "Admin Dashboard";
+			$this->load->view('templates/head',$data);
+			$this->load->view('templates/navbar',$data);
+			$this->load->view('templates/sidebar_Admin');
+			$this->load->view('templates/EmpUpdated_Success');
+			$this->load->view('content/DataEntry_EmpList');
+			$this->load->view('content/Table_EmpList',$data);
+			$this->load->view('templates/footer');
+			$this->load->view('templates/tail');
+			
+		
+	}
 			public function TaskReport()
 	{
 		
@@ -451,6 +468,22 @@ class Report_control extends CI_Controller {
 			$this->load->view('templates/navbar',$data);
 			$this->load->view('templates/sidebar_Admin');
 			$this->load->view('content/Table_TaskReport',$data);
+			$this->load->view('templates/footer');
+			$this->load->view('templates/tail');			
+			 
+	}
+		public function Edit_TaskReport()
+	{
+		$data['Uid'] = $this->input->post('Task_ID_Update');
+		$this->load->model('report_model');
+		$datalist['TaskData'] = $this->report_model->Fetch_TaskData($data);
+		$datalist['ClientName_Data'] = $this->ClientNames();
+		$data['Emp_Name'] = $this->session->userdata('user_name');
+		$data['title'] = "Admin Dashboard";
+			$this->load->view('templates/head',$data);
+			$this->load->view('templates/navbar',$data);
+			$this->load->view('templates/sidebar_Admin');
+			$this->load->view('content/DataEntry_EditTaskReport',$datalist);
 			$this->load->view('templates/footer');
 			$this->load->view('templates/tail');			
 			 

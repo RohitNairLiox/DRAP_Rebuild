@@ -70,20 +70,20 @@ class Insert_model extends CI_Model{
 	 
 	
 	}
-	public function Insert_adultTeachers($data){
-	 
-	 $this->db->insert('adult_teachers',$data);
-	
-	}
-	public function Insert_adultStaffs($data){
-	 
-	 $this->db->insert('adult_staffs',$data);
-	
-	}
 	public function Delete_Employee($data){
 		$id = $data['Emp_ID'];
 		$this->db->delete('user_info', array('Uid' => $id));
 
+	}
+	public function Update_Employee($data){
+		$id = $data['Emp_ID'];
+		$Name = $data['Emp_Name'];
+		$Username = $data['Emp_Username'];
+		$UserPassword = $data['Emp_Password'];
+		$UserRole = $data['Emp_Role'];
+			$query = $this->db->simple_query("UPDATE user_info SET Name='$Name', Username='$Username', Password='$UserPassword', Role='$UserRole'  WHERE Uid='$id'");
+
+	 		
 	}
 
 	public function Change_password($data)
