@@ -5,18 +5,20 @@ class Report_control extends CI_Controller {
 		public function admin_dashboard()
 	{
 		$this->UserLoginCheck();
-			$data['TaskList_Data'] = $this->currentTask_list();
-			$data['ClientList_Data'] = $this->Client_list();
+			$datalist['TaskList_Data'] = $this->currentTask_list();
+			$datalist['ClientList_Data'] = $this->Client_list();
+			$datalist['Emp_List'] = $this->Emp_list();
 			$data['Emp_Name'] = $this->session->userdata('user_name');
 			$data['title'] = "Admin Dashboard";
-			$data['tableName'] = "New Task List";
+			$datalist['tableName'] = "New Task List";
 			$this->load->view('templates/head',$data);
 			$this->load->view('templates/navbar',$data);
 			$this->load->view('templates/sidebar_Admin');
 			$this->load->view('templates/Welcome_banner');
 			$this->load->view('content/AdminDashboard_content');
-			$this->load->view('content/Table_TaskList',$data);
-			$this->load->view('content/Table_ClientList',$data);
+			$this->load->view('content/Table_TaskList',$datalist);
+			$this->load->view('content/Table_ClientList',$datalist);
+			$this->load->view('content/Table_EmpList',$datalist);
 			$this->load->view('templates/footer');
 			$this->load->view('templates/tail');
 			
@@ -25,17 +27,19 @@ class Report_control extends CI_Controller {
 		public function adminoverview()
 	{
 		$this->UserLoginCheck();
-			$data['TaskList_Data'] = $this->currentTask_list();
-			$data['ClientList_Data'] = $this->Client_list();
+			$datalist['TaskList_Data'] = $this->currentTask_list();
+			$datalist['ClientList_Data'] = $this->Client_list();
+			$datalist['Emp_List'] = $this->Emp_list();
 			$data['Emp_Name'] = $this->session->userdata('user_name');
 			$data['title'] = "Admin Dashboard";
-			$data['tableName'] = "New Task List";
+			$datalist['tableName'] = "New Task List";
 			$this->load->view('templates/head',$data);
 			$this->load->view('templates/navbar',$data);
 			$this->load->view('templates/sidebar_Admin');
 			$this->load->view('content/AdminDashboard_content');
-			$this->load->view('content/Table_TaskList',$data);
-			$this->load->view('content/Table_ClientList',$data);
+			$this->load->view('content/Table_TaskList',$datalist);
+			$this->load->view('content/Table_ClientList',$datalist);
+			$this->load->view('content/Table_EmpList',$datalist);
 			$this->load->view('templates/footer');
 			$this->load->view('templates/tail');
 

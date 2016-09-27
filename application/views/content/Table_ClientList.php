@@ -1,8 +1,26 @@
 <div class="container-fluid">
-	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="Cl_Table">
 		<h2 class="sub-header" id="ClientList">All Client List</h2>
-		  <div class="scrollit"  style="overflow-y:scroll; max-height:500px; overflow-x:auto;">
-            <table class="table table-striped table-hover table-responsive table-bordered table-condensed" id="table2">
+<div class="well">
+<big class="text-muted">Search:</big>
+<p id="Cl_rowCount"></p>
+<div class="row">
+  <div class="col-md-3">
+  	<input type="text" onkeyup="clientList_CName()" class="form-control" name="Cl_Name_Client" id="Cl_Name_Client" placeholder="Search By Client Name" />
+  </div>
+  <div class="col-md-3">
+  	<input type="text" onkeyup="clientList_RBy()" class="form-control" name="Cl_RBy" id="Cl_RBy" placeholder="Search By Referred by Name">
+  </div>
+  <div class="col-md-3">
+  	<input type="text" onkeyup="clientList_PNo()" class="form-control" name="Cl_PNo" id="Cl_PNo" placeholder="Search by PAN No.">
+  </div>
+  <div class="col-md-3">
+  	<input type="text" onkeyup="clientList_Address()" class="form-control" name="Cl_Address" id="Cl_Address" placeholder="Search by Address">
+  </div>
+</div>
+</div>
+		  <div class="scrollit" Style="overflow: auto; max-height: 600px;">
+            <table class="table table-striped table-hover table-responsive table-bordered table-condensed" id="table2" >
              
 			<thead>
 				<tr>
@@ -44,16 +62,97 @@
           
 		</div>
 	</div>
-<script language="javascript" type="text/javascript">
+	<script>
+function clientList_CName() {
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("Cl_Name_Client");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("table2");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[2];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+function clientList_RBy() {
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("Cl_RBy");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("table2");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[4];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+function clientList_PNo() {
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("Cl_PNo");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("table2");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[10];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+function clientList_Address() {
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("Cl_Address");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("table2");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[17];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
 
-var table2_Props = 	{
-				btn_reset: true,
-				bnt_reset_text: "Show all"
-			};
-var x = document.getElementById("table2").rows.length;
+	$(document).ready(function(){
 
+	   var numOfVisibleRows = $('#table2 tbody tr:visible').length;
+	   $("#Cl_rowCount").text(numOfVisibleRows + " Rows");
 
-//<![CDATA[
-setFilterGrid("table2",table2_Props);
-//]]>
+    	$("#Cl_Name_Client").keyup(function(){
+    		var numOfVisibleRow = $('#table2 tbody tr:visible').length;
+	   		$("#Cl_rowCount").text(numOfVisibleRow + " Rows");
+    	});
+       	$("#Cl_RBy").keyup(function(){
+    		var numOfVisibleRow = $('#table2 tbody tr:visible').length;
+	   		$("#Cl_rowCount").text(numOfVisibleRow + " Rows");
+    	});
+       	$("#Cl_PNo").keyup(function(){
+    		var numOfVisibleRow = $('#table2 tbody tr:visible').length;
+	   		$("#Cl_rowCount").text(numOfVisibleRow + " Rows");
+    	});
+       	$("#Cl_Address").keyup(function(){
+    		var numOfVisibleRow = $('#table2 tbody tr:visible').length;
+	   		$("#Cl_rowCount").text(numOfVisibleRow + " Rows");
+    	});
+	}); 
+
 </script>
