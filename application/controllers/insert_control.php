@@ -108,6 +108,30 @@ class Insert_control extends CI_Controller {
 			redirect('UserUpdated'); 
 
 	}
+		public function Update_ClientData(){
+		$data['UID'] = $this->input->post('ClientData_Uid');
+		$data['Client_ID'] = $this->input->post('Client_ID');
+		$data['Client_name'] = $this->input->post('Client_Name');
+		$data['Address'] = $this->input->post('Address');	
+		$data['Client_type'] = $this->input->post('Task_severity');
+		$data['Referred_by'] = $this->input->post('ReferredBy');
+		$data['ResContact'] = $this->input->post('ResContactNo');
+		$data['OffcContact'] = $this->input->post('OffcContactNo');
+		$data['MobContact'] = $this->input->post('MobContactNo');
+		$data['AltContact'] = $this->input->post('AltContactNo');
+		$data['Email'] = $this->input->post('EmailId');
+		$data['PAN_No'] = $this->input->post('PANNo');
+		$data['ST_No'] = $this->input->post('STNo');
+		$data['VAT_No'] = $this->input->post('VATNo');
+		$data['CST_No'] = $this->input->post('CSTNo');
+		$data['PTRC_No'] = $this->input->post('PTRCNo');
+		$data['PTEC_No'] = $this->input->post('PTECNo');
+		$data['TAN_No'] = $this->input->post('TANNo');
+		$this->load->model('insert_model');
+		$this->insert_model->Update_Client($data);
+			redirect('ClientUpdated'); 
+
+	}
 	// THE CODE THAT I'M WORKING ON  THE CODE THAT I'M WORKING ON  THE CODE THAT I'M WORKING ON  THE CODE THAT I'M WORKING ON 
 	public function EditEmployee(){
 		$data['Emp_ID'] = $this->input->post('Emp_IDEdit');

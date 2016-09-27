@@ -404,6 +404,36 @@ class Report_control extends CI_Controller {
 			$this->load->view('templates/footer');
 			$this->load->view('templates/tail');
 	 }
+	 	public function Edit_ClientData()
+	 {
+	 	$data['Client_UID'] = $this->input->post('Client_UID');
+	 	$this->load->model('report_model');
+	 	$datalist['Selected_ClientData'] =  $this->report_model->Fetch_clientData($data);
+	 	$this->UserLoginCheck();
+	 		$data['Emp_Name'] = $this->session->userdata('user_name');
+			$data['title'] = "Admin Dashboard";
+			$this->load->view('templates/head',$data);
+			$this->load->view('templates/navbar',$data);
+			$this->load->view('templates/sidebar_Admin');
+			$this->load->view('content/DataEntry_EditClientList',$datalist);
+			$this->load->view('templates/footer');
+			$this->load->view('templates/tail');
+	 }
+	 	public function ClientData_Updated()
+	 {
+	 	
+	 	$this->UserLoginCheck();
+	 		$data['ClientList_Data'] = $this->Client_list();
+	 		$data['Emp_Name'] = $this->session->userdata('user_name');
+			$data['title'] = "Admin Dashboard";
+			$this->load->view('templates/head',$data);
+			$this->load->view('templates/navbar',$data);
+			$this->load->view('templates/sidebar_Admin');
+			$this->load->view('templates/clientsuccess_DataEntry');
+			$this->load->view('content/Table_ClientList',$data);
+			$this->load->view('templates/footer');
+			$this->load->view('templates/tail');
+	 }
 	 
 	 	 public function DailyReport()
 	 {

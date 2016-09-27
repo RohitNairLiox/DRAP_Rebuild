@@ -32,6 +32,30 @@ class Insert_model extends CI_Model{
 					 $this->db->where('Uid', $id);
 					 $this->db->update('new_task', $datalist); 
 	}
+	public function Update_Client($data){
+		$id = $data['UID'];
+			$datalist['Client_ID'] = $data['Client_ID'];
+			$datalist['Client_name'] = $data['Client_name'];
+			$datalist['Address'] = $data['Address'];
+			$datalist['Client_type'] = $data['Client_type'];
+			$datalist['Referred_by'] = $data['Referred_by'];
+			$datalist['ResContact'] = $data['ResContact'];
+			$datalist['OffcContact'] = $data['OffcContact'];
+			$datalist['MobContact'] = $data['MobContact'];
+			$datalist['AltContact'] = $data['AltContact'];
+			$datalist['Email'] = $data['Email'];
+			$datalist['PAN_No'] = $data['PAN_No'];
+			$datalist['ST_No'] = $data['ST_No'];
+			$datalist['VAT_No'] = $data['VAT_No'];
+			$datalist['CST_No'] = $data['CST_No'];
+			$datalist['PTRC_No'] = $data['PTRC_No'];
+			$datalist['PTEC_No'] = $data['PTEC_No'];
+			$datalist['TAN_No'] = $data['TAN_No'];
+			
+
+					 $this->db->where('Uid', $id);
+					 $this->db->update('client_info', $datalist); 
+	}
 	public function AddTaskReport($data){
 	 
 	 $Task_Uid = $data['Task_Uid'];

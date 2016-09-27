@@ -74,6 +74,12 @@ class Report_model extends CI_Model{
 				$query = $this->db->query("SELECT * FROM user_info WHERE Uid='$id'");
 				return $query->result();
 		}
+	public function Fetch_clientData($data)
+		{
+			$id = $data['Client_UID'];
+				$query = $this->db->query("SELECT * FROM client_info WHERE Uid='$id'");
+				return $query->result();
+		}
 
 
 	/* Result Model ENDS */

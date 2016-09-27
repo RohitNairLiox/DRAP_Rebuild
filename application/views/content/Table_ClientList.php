@@ -1,3 +1,9 @@
+<style>
+	.Scroll_Y {
+		overflow: auto;
+		max-height:550px;
+	}
+</style>
 <div class="container-fluid">
 	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="Cl_Table">
 		<h2 class="sub-header" id="ClientList">All Client List</h2>
@@ -19,7 +25,7 @@
   </div>
 </div>
 </div>
-		  <div class="scrollit" Style="overflow: auto; max-height: 600px;">
+		  <div class="scrollit Scroll_Y">
             <table class="table table-striped table-hover table-responsive table-bordered table-condensed" id="table2" >
              
 			<thead>
@@ -48,7 +54,7 @@
 				<?php
 					foreach($ClientList_Data as $row)
 					{
-						echo '<tr><td>'.$row->Uid.'</td><td>'.$row->Client_ID.'</td><td>'.$row->Client_name.'</td><td>'.$row->Client_type.'</td><td>'.$row->Referred_by.'</td><td>'.$row->ResContact.'</td><td>'.$row->OffcContact.'</td><td>'.$row->MobContact.'</td><td>'.$row->AltContact.'</td><td>'.$row->Email.'</td><td>'.$row->PAN_No.'</td><td>'.$row->ST_No.'</td><td>'.$row->VAT_No.'</td><td>'.$row->CST_No.'</td><td>'.$row->PTRC_No.'</td><td>'.$row->PTEC_No.'</td><td>'.$row->TAN_No.'</td><td class="text-center">'.$row->Address.'</td></tr>';
+						echo '<tr><td>'.$row->Uid.'</td><td>'.$row->Client_ID.'</td><td>'.$row->Client_name.'</td><td>'.$row->Client_type.'</td><td>'.$row->Referred_by.'</td><td>'.$row->ResContact.'</td><td>'.$row->OffcContact.'</td><td>'.$row->MobContact.'</td><td>'.$row->AltContact.'</td><td>'.$row->Email.'</td><td>'.$row->PAN_No.'</td><td>'.$row->ST_No.'</td><td>'.$row->VAT_No.'</td><td>'.$row->CST_No.'</td><td>'.$row->PTRC_No.'</td><td>'.$row->PTEC_No.'</td><td>'.$row->TAN_No.'</td><td class="text-center">'.$row->Address.'</td><td><form action="EditClient" method="post"><button type="submit" value="'.$row->Uid.'" name="Client_UID" id="Client_UID" class="btn btn-success glyphicon glyphicon-pencil"></button></form></td></tr>';
 					}
 				?>	
 			</tbody>
@@ -62,97 +68,4 @@
           
 		</div>
 	</div>
-	<script>
-function clientList_CName() {
-  var input, filter, table, tr, td, i;
-  input = document.getElementById("Cl_Name_Client");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("table2");
-  tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[2];
-    if (td) {
-      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }       
-  }
-}
-function clientList_RBy() {
-  var input, filter, table, tr, td, i;
-  input = document.getElementById("Cl_RBy");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("table2");
-  tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[4];
-    if (td) {
-      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }       
-  }
-}
-function clientList_PNo() {
-  var input, filter, table, tr, td, i;
-  input = document.getElementById("Cl_PNo");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("table2");
-  tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[10];
-    if (td) {
-      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }       
-  }
-}
-function clientList_Address() {
-  var input, filter, table, tr, td, i;
-  input = document.getElementById("Cl_Address");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("table2");
-  tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[17];
-    if (td) {
-      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }       
-  }
-}
-
-	$(document).ready(function(){
-
-	   var numOfVisibleRows = $('#table2 tbody tr:visible').length;
-	   $("#Cl_rowCount").text(numOfVisibleRows + " Rows");
-
-    	$("#Cl_Name_Client").keyup(function(){
-    		var numOfVisibleRow = $('#table2 tbody tr:visible').length;
-	   		$("#Cl_rowCount").text(numOfVisibleRow + " Rows");
-    	});
-       	$("#Cl_RBy").keyup(function(){
-    		var numOfVisibleRow = $('#table2 tbody tr:visible').length;
-	   		$("#Cl_rowCount").text(numOfVisibleRow + " Rows");
-    	});
-       	$("#Cl_PNo").keyup(function(){
-    		var numOfVisibleRow = $('#table2 tbody tr:visible').length;
-	   		$("#Cl_rowCount").text(numOfVisibleRow + " Rows");
-    	});
-       	$("#Cl_Address").keyup(function(){
-    		var numOfVisibleRow = $('#table2 tbody tr:visible').length;
-	   		$("#Cl_rowCount").text(numOfVisibleRow + " Rows");
-    	});
-	}); 
-
-</script>
+	<script src="<?php echo base_url(); ?>ASSETS/CUSTOM/js/ClientList_Search.js"></script>

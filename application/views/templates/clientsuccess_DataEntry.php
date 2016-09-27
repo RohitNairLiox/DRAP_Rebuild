@@ -5,7 +5,7 @@
 <div class="alert alert-success" role="alert">
   <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
   <span class="sr-only">Success:</span>
-  Client Data Has Been Successfully Updated!  <a href="<?php base_url(); ?>AllClientList">Click Here to View it</a>
+  Client Data Has Been Successfully Updated!  
    <button type="button" class="close" data-dismiss="alert">&times;</button>
 </div>
 	

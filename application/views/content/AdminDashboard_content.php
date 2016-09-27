@@ -40,8 +40,8 @@ a:hover{text-decoration:none;}
 <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>ASSETS/CUSTOM/js/actb.js"></script>
 <style>
 .scrollit {
-    overflow-y: auto;
-    overflow-x: auto;
-    max-height: 550px;
+    overflow-y: auto !important;
+    overflow-x: auto !important;
+    max-height: 550px !important;
   }
 </style>
